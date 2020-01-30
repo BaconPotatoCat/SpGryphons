@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "363593847684",
+    "firebase_url": "https://gryphonslogin.firebaseio.com",
+    "project_id": "gryphonslogin",
+    "storage_bucket": "gryphonslogin.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:363593847684:android:2646432153fe29185fc3d1",
+        "android_client_info": {
+          "package_name": "edu.sp.spgryphons"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "363593847684-j3jprmjo6qrjpo0lmnkejg3u0a8ij4e1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxKrxQcrCfb5olk9lfFENkIsjMlt1fmFs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "363593847684-j3jprmjo6qrjpo0lmnkejg3u0a8ij4e1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
