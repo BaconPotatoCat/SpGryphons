@@ -27,6 +27,7 @@ public class attendance extends AppCompatActivity {
         Log.d("name","Theva commmit");
 
         Log.d("name","Theva commmit");
+        Log.d("name","Theva commmit");
 
 
 
