@@ -24,6 +24,8 @@ public class attendance extends AppCompatActivity {
         setContentView(R.layout.activity_attendance);
 
         Log.d("name","Theva commmit");
+        Log.d("name","Theva commmit");
+
 
 
     }
