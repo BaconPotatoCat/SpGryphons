@@ -6,17 +6,18 @@
     android:layout_height="match_parent">
 
     <TextView
-    android:id="@+id/textTitle"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:textSize="14sp"
-    android:textStyle="bold"
-    android:text="Title" />
+        android:id="@+id/textTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:text="Title" />
 
     <EditText
         android:id="@+id/editTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginRight="80dp"
         android:inputType="textLongMessage" />
 
     <TextView
@@ -31,6 +32,7 @@
         android:id="@+id/editDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginRight="80dp"
         android:inputType="textLongMessage" />
 
     <TextView
@@ -45,6 +47,7 @@
         android:id="@+id/editTime"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginRight="80dp"
         android:inputType="textLongMessage" />
 
     <TextView
@@ -59,12 +62,46 @@
         android:id="@+id/editDesc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginRight="80dp"
+        android:inputType="textLongMessage" />
+
+    <TextView
+        android:id="@+id/textLat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:text="Latitude" />
+
+    <EditText
+        android:id="@+id/editLat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="80dp"
+        android:inputType="textLongMessage" />
+
+    <TextView
+        android:id="@+id/textLong"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:text="Longitude" />
+
+    <EditText
+        android:id="@+id/editLong"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="80dp"
         android:inputType="textLongMessage" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:layout_marginBottom="16dp"
+        android:layout_marginTop="40dp"
         android:text="Submit"
         android:layout_alignParentBottom="true"
         android:onClick="submitEvent"/>
