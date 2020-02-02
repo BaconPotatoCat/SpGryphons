@@ -11,7 +11,7 @@ import android.widget.TextView;
 public class addEvent extends AppCompatActivity {
 
     private EditText text;
-    public static final String EXTRA_MESSAGE = "edu.sp.spgryphons.extra.MESSAGE";
+    private String content;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +25,7 @@ public class addEvent extends AppCompatActivity {
         Log.d("tag","Event submitted.");
 
         text = findViewById(R.id.editTitle);
-        String content = text.getText().toString()+"\n";
+        content += text.getText().toString()+"\n";
         text = findViewById(R.id.editDate);
         content += text.getText().toString()+"\n";
         text = findViewById(R.id.editTime);
