@@ -2,23 +2,29 @@ package edu.sp.spgryphons;
 
 import androidx.fragment.app.FragmentActivity;
 
+import android.content.Intent;
+import android.location.Location;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class eventMapsActivity extends FragmentActivity implements OnMapReadyCallback {
+public class addEventMapActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
-
+    private Marker mLocation;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_event_maps);
+        setContentView(R.layout.activity_add_event_map);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -40,9 +46,30 @@ public class eventMapsActivity extends FragmentActivity implements OnMapReadyCal
         mMap = googleMap;
         float zoom = 17;
         // Add a marker in Sydney and move the camera
-        String[] coords = getIntent().getStringArrayExtra("coords");
-        LatLng coor = new LatLng(Double.parseDouble(coords[0]),Double.parseDouble(coords[1]));
-        mMap.addMarker(new MarkerOptions().position(coor).title("Event Location"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(coor,zoom));
+        LatLng defLoc = new LatLng(1.3116252, 103.774457);
+        mLocation = mMap.addMarker(new MarkerOptions().position(defLoc).title("Default Location").draggable(true));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(defLoc,zoom));
+        //setMapLongClick(mMap);
     }
+
+    public void confirmLoc(View v) {
+        String[] cfmCoord = {Double.toString(mLocation.getPosition().latitude),Double.toString(mLocation.getPosition().longitude)};
+        Log.d("tag","MARKER POSITION: "+cfmCoord[0]+","+cfmCoord[1]);
+        Toast.makeText(getApplicationContext(),"Location with lat:"+cfmCoord[0]+" & long:"+cfmCoord[1]+
+                " has been set.", Toast.LENGTH_SHORT).show();
+        Intent i = new Intent(this,addEvent.class);
+        i.putExtra("coords",cfmCoord);
+        startActivity(i);
+    }
+    /*
+    private void setMapLongClick(final GoogleMap map) {
+        map.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
+            @Override
+            public void onMapLongClick(LatLng latLng) {
+
+                map.addMarker(new MarkerOptions().position(latLng));
+            }
+        });
+    }
+    */
 }

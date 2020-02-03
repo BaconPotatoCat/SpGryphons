@@ -65,35 +65,13 @@
         android:layout_marginRight="80dp"
         android:inputType="textLongMessage" />
 
-    <TextView
-        android:id="@+id/textLat"
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/setLoc"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        android:text="Latitude" />
-
-    <EditText
-        android:id="@+id/editLat"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="80dp"
-        android:inputType="textLongMessage" />
-
-    <TextView
-        android:id="@+id/textLong"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        android:text="Longitude" />
-
-    <EditText
-        android:id="@+id/editLong"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="80dp"
-        android:inputType="textLongMessage" />
+        android:layout_marginTop="10dp"
+        android:text="Set Location"
+        android:onClick="setLocation"/>
 
     <Button
         android:layout_width="match_parent"

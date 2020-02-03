@@ -32,8 +32,11 @@
             android:value="@string/google_maps_key" />
 
         <activity
+            android:name=".addEventMapActivity"
+            android:label="@string/title_activity_add_event_map"></activity>
+        <activity
             android:name=".eventMapsActivity"
-            android:label="@string/title_activity_event_maps"></activity>
+            android:label="@string/title_activity_event_maps" />
         <activity android:name=".addEvent" />
         <activity android:name=".TestHome" />
         <activity android:name=".project" />
@@ -45,11 +48,14 @@
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginPage"/>
-        <activity android:name=".RealLoginPage" android:parentActivityName=".MainActivity" />
+        <activity android:name=".LoginPage" />
+        <activity
+            android:name=".RealLoginPage"
+            android:parentActivityName=".MainActivity" />
         <activity android:name=".HomePage" />
     </application>
 

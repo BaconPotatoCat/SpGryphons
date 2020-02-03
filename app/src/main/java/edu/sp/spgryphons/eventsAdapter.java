@@ -15,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.model.LatLng;
 
 import java.util.ArrayList;
 
@@ -53,7 +54,7 @@ public class eventsAdapter extends
 
     @Override
     public void onBindViewHolder(@NonNull eventsAdapter.EventsViewHolder holder, int position) {
-        eventObj mCurrent = mEventList.get(position);
+        final eventObj mCurrent = mEventList.get(position);
         String eventDetails = "Event: "+mCurrent.getTitle()+"\nDate: "+mCurrent.getDate()+"\nTime: "+mCurrent.getTime()+
                 "\nDescription: "+mCurrent.getDescription();
         holder.eventItemView.setText(eventDetails);
@@ -63,7 +64,9 @@ public class eventsAdapter extends
             new eventMapOnClickListener(mCurrent.getLat(),mCurrent.getLong()) {
                 @Override
                 public void onClick(View v) {
+                    String[] coords = {Double.toString(lat),Double.toString(longi)};
                     Intent i = new Intent(mContext,eventMapsActivity.class);
+                    i.putExtra("coords", coords);
                     mContext.startActivity(i);
                 }
             }
