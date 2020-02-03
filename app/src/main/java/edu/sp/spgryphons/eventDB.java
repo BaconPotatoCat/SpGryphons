@@ -101,4 +101,9 @@ public class eventDB {
         };
         queue.add(stringRequest);
     }
+
+    public static void getEventMap(double latitude, double longitude) {
+        final double lat = latitude;
+        final double lon = longitude;
+    }
 }
