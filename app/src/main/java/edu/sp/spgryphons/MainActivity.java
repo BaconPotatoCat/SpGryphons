@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setTheme(R.style.AppTheme);
-        Intent intent = new Intent(this,LoginPage.class);
+        Intent intent = new Intent(this,RealLoginPage.class);
         startActivity(intent);
     }
 

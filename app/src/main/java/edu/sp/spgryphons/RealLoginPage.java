@@ -41,7 +41,7 @@ public class RealLoginPage extends AppCompatActivity {
                 FirebaseUser mFirebaseUser = mFirebaseAuth.getCurrentUser();
                 if( mFirebaseUser != null){
                     Toast.makeText(RealLoginPage.this,"You are logged in!",Toast.LENGTH_SHORT).show();
-                    Intent i = new Intent(RealLoginPage.this, HomePage.class);
+                    Intent i = new Intent(RealLoginPage.this, TestHome.class);
                     startActivity(i);
                 }
                 else{
@@ -54,38 +54,38 @@ public class RealLoginPage extends AppCompatActivity {
         {
             @Override
             public void onClick(View v) {
-                    String email = emailId.getText().toString();
-                    String pwd = password.getText().toString();
-                    if(email.isEmpty()){
-                        emailId.setError("Please enter a valid email!");
-                        emailId.requestFocus();
-                    }
-                    else if(pwd.isEmpty()){
-                        password.setError("Please enter a valid password!");
-                        password.requestFocus();
-                    }
-                    else if(email.isEmpty() && pwd.isEmpty()){
-                        Toast.makeText(RealLoginPage.this,"Fields are empty!",Toast.LENGTH_SHORT).show();
+                String email = emailId.getText().toString();
+                String pwd = password.getText().toString();
+                if(email.isEmpty()){
+                    emailId.setError("Please enter a valid email!");
+                    emailId.requestFocus();
+                }
+                else if(pwd.isEmpty()){
+                    password.setError("Please enter a valid password!");
+                    password.requestFocus();
+                }
+                else if(email.isEmpty() && pwd.isEmpty()){
+                    Toast.makeText(RealLoginPage.this,"Fields are empty!",Toast.LENGTH_SHORT).show();
 
-                    }
-                    else if(!(email.isEmpty() && pwd.isEmpty())) {
-                        mFirebaseAuth.signInWithEmailAndPassword(email,pwd).addOnCompleteListener(RealLoginPage.this, new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if(!(task.isSuccessful())){
-                                    Toast.makeText(RealLoginPage.this,"Login Error!! Please try again!",Toast.LENGTH_SHORT).show();
-                                }
-                                else {
-                                    Intent intToHome = new Intent(RealLoginPage.this,HomePage.class);
-                                    startActivity(intToHome);
-                                }
+                }
+                else if(!(email.isEmpty() && pwd.isEmpty())) {
+                    mFirebaseAuth.signInWithEmailAndPassword(email,pwd).addOnCompleteListener(RealLoginPage.this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if(!(task.isSuccessful())){
+                                Toast.makeText(RealLoginPage.this,"Login Error!! Please try again!",Toast.LENGTH_SHORT).show();
                             }
-                        });
-                    }
-                    else{
-                        Toast.makeText(RealLoginPage.this,"Error Occurred!",Toast.LENGTH_SHORT).show();
+                            else {
+                                Intent intToHome = new Intent(RealLoginPage.this,TestHome.class);
+                                startActivity(intToHome);
+                            }
+                        }
+                    });
+                }
+                else{
+                    Toast.makeText(RealLoginPage.this,"Error Occurred!",Toast.LENGTH_SHORT).show();
 
-                    }
+                }
             }
         });
         tvSignUp.setOnClickListener(new View.OnClickListener(){

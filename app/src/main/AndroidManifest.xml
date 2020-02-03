@@ -23,15 +23,12 @@
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".LoginPage"
-            android:parentActivityName=".MainActivity" />
+        <activity android:name=".LoginPage"/>
+        <activity android:name=".RealLoginPage" android:parentActivityName=".MainActivity" />
         <activity android:name=".HomePage" />
-        <activity android:name=".RealLoginPage" />
     </application>
 
 </manifest>
