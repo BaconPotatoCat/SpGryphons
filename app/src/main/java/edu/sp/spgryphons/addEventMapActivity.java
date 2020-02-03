@@ -45,11 +45,11 @@ public class addEventMapActivity extends FragmentActivity implements OnMapReadyC
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         float zoom = 17;
-        // Add a marker in Sydney and move the camera
+        // Add a marker to default location in SP and move camera
         LatLng defLoc = new LatLng(1.3116252, 103.774457);
         mLocation = mMap.addMarker(new MarkerOptions().position(defLoc).title("Default Location").draggable(true));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(defLoc,zoom));
-        //setMapLongClick(mMap);
+        setMapLongClick(mMap);
     }
 
     public void confirmLoc(View v) {
@@ -61,15 +61,14 @@ public class addEventMapActivity extends FragmentActivity implements OnMapReadyC
         i.putExtra("coords",cfmCoord);
         startActivity(i);
     }
-    /*
+
     private void setMapLongClick(final GoogleMap map) {
         map.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
             @Override
             public void onMapLongClick(LatLng latLng) {
-
-                map.addMarker(new MarkerOptions().position(latLng));
+                mMap.clear();
+                mLocation = map.addMarker(new MarkerOptions().position(latLng));
             }
         });
     }
-    */
 }
