@@ -20,16 +20,20 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.tasks.OnSuccessListener;
 
 public class eventMapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     private final int REQUEST_LOCATION_PERMISSION = 1;
+    private final float zoom = 17;
     Button b;
     private Location loc;
-    private FusedLocationProviderClient fusedLocal;
+    private FusedLocationProviderClient fusedLoca;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +43,7 @@ public class eventMapsActivity extends FragmentActivity implements OnMapReadyCal
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        fusedLocal = LocationServices.getFusedLocationProviderClient(this);
+        fusedLoca = LocationServices.getFusedLocationProviderClient(this);
         b = findViewById(R.id.getLocation);
         b.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,7 +66,6 @@ public class eventMapsActivity extends FragmentActivity implements OnMapReadyCal
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        float zoom = 17;
         // Add a marker in Sydney and move the camera
         String[] coords = getIntent().getStringArrayExtra("coords");
         LatLng coor = new LatLng(Double.parseDouble(coords[0]),Double.parseDouble(coords[1]));
@@ -79,6 +82,22 @@ public class eventMapsActivity extends FragmentActivity implements OnMapReadyCal
                     REQUEST_LOCATION_PERMISSION);
         } else {
             Log.d("TAG","getLocation: Permissions granted");
+            fusedLoca.getLastLocation().addOnSuccessListener(
+                    new OnSuccessListener<Location>() {
+                        @Override
+                        public void onSuccess(Location location) {
+                            if (location!=null) {
+                                loc = location;
+                                Log.d("tag","Latitude: "+loc.getLatitude()+", Longitude: "+loc.getLongitude());
+                                LatLng currLoc = new LatLng(loc.getLatitude(),loc.getLongitude());
+                                mMap.addMarker(new MarkerOptions().position(currLoc).title("Current Location").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA)));
+                                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currLoc,zoom));
+                            } else {
+                                Log.d("tag","Failed to retrieve location");
+                            }
+                        }
+                    }
+            );
         }
     }
 
