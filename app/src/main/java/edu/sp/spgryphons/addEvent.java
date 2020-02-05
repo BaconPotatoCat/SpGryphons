@@ -10,6 +10,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 
 public class addEvent extends AppCompatActivity {
 
@@ -60,15 +63,33 @@ public class addEvent extends AppCompatActivity {
     public void submitEvent(View v) {
         text = findViewById(R.id.editTitle);
         title = text.getText().toString();
+
+        Pattern p1 = Pattern.compile("[a-zA-Z]{1,20}");
+        Matcher m1 = p1.matcher(title);
+
         text = findViewById(R.id.editDate);
         date = text.getText().toString();
+
+        Pattern p2 = Pattern.compile("[0-9]{1,11}");
+        Matcher m2 = p2.matcher(date);
+
         text = findViewById(R.id.editTime);
         time = text.getText().toString();
+
+        Pattern p3 = Pattern.compile("[0-9]{1,4}");
+        Matcher m3 = p3.matcher(time);
+
         text = findViewById(R.id.editDesc);
         desc = text.getText().toString();
 
+        Pattern p4 = Pattern.compile("[a-zA-Z]{1,60}");
+        Matcher m4 = p4.matcher(desc);
+
+        if (!m1.matches()||!m2.matches()||!m3.matches()||!m4.matches()) {
+            Toast.makeText(getApplicationContext(),"Please fill in the fields properly.",Toast.LENGTH_SHORT).show();
+            return;
+        }
         if (title.length()<1 || date.length()<1 || time.length()<1 || desc.length()<1) {
-            Log.d("tag","LENGTH NIGGA");
             Toast.makeText(getApplicationContext(),"Please fill in all the fields.",Toast.LENGTH_SHORT).show();
             return;
         }
