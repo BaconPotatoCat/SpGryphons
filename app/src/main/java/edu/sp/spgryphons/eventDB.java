@@ -23,7 +23,7 @@ public class eventDB {
         final ArrayList<eventObj> e = new ArrayList<eventObj>();
         try {
             RequestQueue queue = Volley.newRequestQueue(context);
-            String url = "https://mapp-prac13.firebaseio.com/eventList.json";
+            String url = "https://gryphonslogin.firebaseio.com/eventList.json";
 
             StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                     new Response.Listener<String>() {
@@ -62,7 +62,7 @@ public class eventDB {
     public static void submitEvent(eventObj e, Context context) {
         final eventObj ev = e;
         RequestQueue queue = Volley.newRequestQueue(context);
-        String url = "https://mapp-prac13.firebaseio.com/eventList.json";
+        String url = "https://gryphonslogin.firebaseio.com/eventList.json";
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
                     @Override
