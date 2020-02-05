@@ -2,6 +2,7 @@ package edu.sp.spgryphons;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
 
 import android.Manifest;
@@ -29,11 +30,8 @@ import com.google.android.gms.tasks.OnSuccessListener;
 public class eventMapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
-    private final int REQUEST_LOCATION_PERMISSION = 1;
     private final float zoom = 17;
-    Button b;
-    private Location loc;
-    private FusedLocationProviderClient fusedLoca;
+    private final int REQUEST_LOCATION_PERMISSION = 1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,14 +41,6 @@ public class eventMapsActivity extends FragmentActivity implements OnMapReadyCal
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        fusedLoca = LocationServices.getFusedLocationProviderClient(this);
-        b = findViewById(R.id.getLocation);
-        b.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getLoc();
-            }
-        });
     }
 
 
@@ -71,50 +61,33 @@ public class eventMapsActivity extends FragmentActivity implements OnMapReadyCal
         LatLng coor = new LatLng(Double.parseDouble(coords[0]),Double.parseDouble(coords[1]));
         mMap.addMarker(new MarkerOptions().position(coor).title("Event Location"));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(coor,zoom));
+
+        enableGetLoc();
     }
 
-    public void getLoc() {
-        if (ActivityCompat.checkSelfPermission(this,
+    private void enableGetLoc() {
+        if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.ACCESS_FINE_LOCATION)
-                != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]
-                            {Manifest.permission.ACCESS_FINE_LOCATION},
-                    REQUEST_LOCATION_PERMISSION);
+                == PackageManager.PERMISSION_GRANTED) {
+            mMap.setMyLocationEnabled(true);
         } else {
-            Log.d("TAG","getLocation: Permissions granted");
-            fusedLoca.getLastLocation().addOnSuccessListener(
-                    new OnSuccessListener<Location>() {
-                        @Override
-                        public void onSuccess(Location location) {
-                            if (location!=null) {
-                                loc = location;
-                                Log.d("tag","Latitude: "+loc.getLatitude()+", Longitude: "+loc.getLongitude());
-                                LatLng currLoc = new LatLng(loc.getLatitude(),loc.getLongitude());
-                                mMap.addMarker(new MarkerOptions().position(currLoc).title("Current Location").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA)));
-                                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currLoc,zoom));
-                            } else {
-                                Log.d("tag","Failed to retrieve location");
-                            }
-                        }
-                    }
-            );
+            ActivityCompat.requestPermissions(this, new String[]
+                    {Manifest.permission.ACCESS_FINE_LOCATION},
+                    REQUEST_LOCATION_PERMISSION);
         }
     }
 
     @Override
-    public void onRequestPermissionsResult (int requestCode,
-                                            @NonNull String[] permissions, @NonNull int[] grantResults) {
-        switch(requestCode) {
+    public void onRequestPermissionsResult(int requestCode,
+                                           @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
+        switch (requestCode) {
             case REQUEST_LOCATION_PERMISSION:
-                //If permission is granted, get location
-                //Else show toast
-                if (grantResults.length>0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    getLoc();
-                } else {
-                    Toast.makeText(this, R.string.location_permission_denied,
-                            Toast.LENGTH_SHORT).show();
+                if (grantResults.length>0 && grantResults[0]==PackageManager.PERMISSION_GRANTED) {
+                    enableGetLoc();
+                    break;
                 }
-                break;
+
         }
     }
 }
