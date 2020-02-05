@@ -16,7 +16,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 
 public class eventDB {
     public static ArrayList<eventObj> getEventObj(Context context) {
@@ -35,7 +34,6 @@ public class eventDB {
                                 JSONArray names = JObj.names();
                                 for (int i=0;i<names.length();i++) {
                                     JSONObject eve = JObj.getJSONObject(names.getString(i));
-                                    Log.d("TAG", "event" + i + " eve:" + eve);
                                     eventObj ev = new eventObj(eve.getString("title"), eve.getString("date"),
                                             eve.getString("time"), eve.getString("description"),
                                             eve.getDouble("latitude"), eve.getDouble("longitude"));
@@ -85,8 +83,6 @@ public class eventDB {
                     obj.put("description",ev.getDescription());
                     obj.put("latitude",ev.getLat());
                     obj.put("longitude",ev.getLong());
-
-                    Log.d("tag","Object to submit: "+obj.toString());
 
                     return obj.toString().getBytes();
                 } catch (Exception e) {

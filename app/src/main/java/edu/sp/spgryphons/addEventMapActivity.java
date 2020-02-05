@@ -3,9 +3,7 @@ package edu.sp.spgryphons;
 import androidx.fragment.app.FragmentActivity;
 
 import android.content.Intent;
-import android.location.Location;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -54,7 +52,6 @@ public class addEventMapActivity extends FragmentActivity implements OnMapReadyC
 
     public void confirmLoc(View v) {
         String[] cfmCoord = {Double.toString(mLocation.getPosition().latitude),Double.toString(mLocation.getPosition().longitude)};
-        Log.d("tag","MARKER POSITION: "+cfmCoord[0]+","+cfmCoord[1]);
         Toast.makeText(getApplicationContext(),"Location with lat:"+cfmCoord[0]+" & long:"+cfmCoord[1]+
                 " has been set.", Toast.LENGTH_SHORT).show();
         Intent i = new Intent(this,addEvent.class);

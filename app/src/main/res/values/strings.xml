@@ -2,4 +2,5 @@
     <string name="app_name">SpGryphons</string>
     <string name="title_activity_event_maps">Map</string>
     <string name="title_activity_add_event_map">Map</string>
+    <string name="location_permission_denied">"Please enable location services"</string>
 </resources>

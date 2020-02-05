@@ -41,7 +41,7 @@
         <activity android:name=".TestHome" />
         <activity android:name=".project" />
         <activity android:name=".attendance" />
-        <activity android:name=".events" />
+        <activity android:name=".events" android:label="Events"/>
         <activity android:name=".Setting" />
         <activity
             android:name=".MainActivity"

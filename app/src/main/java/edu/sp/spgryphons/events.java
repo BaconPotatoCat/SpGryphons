@@ -116,7 +116,7 @@ public class events extends AppCompatActivity {
         //if(getColor() != getResources().getColor(R.color.colorPrimary)){
         //    mToolbar.setBackgroundColor(getColor());
         //}
-        mToolbar.setBackgroundColor(m);
+        //mToolbar.setBackgroundColor(m);
     }
 
 

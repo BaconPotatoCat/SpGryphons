@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -27,8 +26,6 @@ public class addEvent extends AppCompatActivity {
         setContentView(R.layout.activity_add_event);
 
         TextView textTitle = findViewById(R.id.textTitle);
-
-
     }
 
     public void setLocation(View v){
@@ -36,10 +33,6 @@ public class addEvent extends AppCompatActivity {
         startActivity(i);
     }
     public void submitEvent(View v) {
-        Log.d("tag","Event submitted.");
-
-
-
         text = findViewById(R.id.editTitle);
         title = text.getText().toString();
         text = findViewById(R.id.editDate);
@@ -55,15 +48,12 @@ public class addEvent extends AppCompatActivity {
         if (coord != null) {
             lat = Double.parseDouble(coord[0]);
             longi = Double.parseDouble(coord[1]);
-            Log.d("tag","coord is not null");
         } else {
             // Setting default location for if no location is set.
             lat = 1.3116252;
             longi = 103.774457;
-            Log.d("tag","coord is null");
         }
 
-        Log.d("tag","FINAL COORD:"+Double.toString(lat)+","+Double.toString(longi));
         eventObj e = new eventObj(title, date, time, desc ,lat ,longi);
 
         eventDB b = new eventDB();
@@ -73,7 +63,5 @@ public class addEvent extends AppCompatActivity {
 
         Intent i = new Intent(addEvent.this, events.class);
         startActivity(i);
-
-        Log.d("tag","Content: ");
     }
 }
