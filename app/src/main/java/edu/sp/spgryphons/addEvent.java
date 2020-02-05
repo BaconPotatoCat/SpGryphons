@@ -99,7 +99,7 @@ public class addEvent extends AppCompatActivity {
             lat = Double.parseDouble(coord[0]);
             longi = Double.parseDouble(coord[1]);
         } else {
-            // Setting default location for if no location is set.
+            // Setting default location for if no location is set
             lat = 1.3116252;
             longi = 103.774457;
         }
