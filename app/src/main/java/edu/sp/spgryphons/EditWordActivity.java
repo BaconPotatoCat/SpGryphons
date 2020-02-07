@@ -5,8 +5,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 /**
@@ -62,6 +66,21 @@ public class EditWordActivity extends AppCompatActivity {
         String word = ((EditText) findViewById(R.id.edit_word)).getText().toString();
         String date = ((EditText) findViewById(R.id.edit_date)).getText().toString();
 
+        Pattern p1 = Pattern.compile("^[a-zA-Z]{1,20}+( +[a-zA-Z]{1,20}+){0,6}");
+        Matcher m1 = p1.matcher(word);
+
+        Pattern p2 = Pattern.compile("[0-9]{2} [a-zA-Z]{3} [0-9]{4}");
+        Matcher m2 = p2.matcher(date);
+
+        if (!m1.matches()) {
+            Toast.makeText(getApplicationContext(),"The title can have a maximum of 7 words and must not contain any special characters.",Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        if (!m2.matches()) {
+            Toast.makeText(getApplicationContext(),"The Deadline must be in this format: 11 Sep 2001.",Toast.LENGTH_LONG).show();
+            return;
+        }
         Intent replyIntent = new Intent();
         replyIntent.putExtra(EXTRA_REPLY, word);
         replyIntent.putExtra(wasd,date);

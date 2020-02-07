@@ -52,8 +52,6 @@ public class addEventMapActivity extends FragmentActivity implements OnMapReadyC
 
     public void confirmLoc(View v) {
         String[] cfmCoord = {Double.toString(mLocation.getPosition().latitude),Double.toString(mLocation.getPosition().longitude)};
-        Toast.makeText(getApplicationContext(),"Location with lat:"+cfmCoord[0]+" & long:"+cfmCoord[1]+
-                " has been set.", Toast.LENGTH_SHORT).show();
         Intent i = new Intent(this,addEvent.class);
         i.putExtra("coords",cfmCoord);
         startActivity(i);
