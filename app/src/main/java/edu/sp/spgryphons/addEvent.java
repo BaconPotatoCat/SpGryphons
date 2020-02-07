@@ -36,7 +36,7 @@ public class addEvent extends AppCompatActivity {
         setContentView(R.layout.activity_add_event);
         Logout = findViewById(R.id.logout);
         getState();
-        
+
         Logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,7 +78,7 @@ public class addEvent extends AppCompatActivity {
         text = findViewById(R.id.editTitle);
         title = text.getText().toString();
 
-        Pattern p1 = Pattern.compile("^[a-zA-Z]+( [a-zA-Z]+){1,6}");
+        Pattern p1 = Pattern.compile("^[a-zA-Z]+( [a-zA-Z]+){0,6}");
         Matcher m1 = p1.matcher(title);
 
         text = findViewById(R.id.editDate);
@@ -96,7 +96,7 @@ public class addEvent extends AppCompatActivity {
         text = findViewById(R.id.editDesc);
         desc = text.getText().toString();
 
-        Pattern p4 = Pattern.compile("^[a-zA-Z]+( [a-zA-Z,.&]+){1,60}");
+        Pattern p4 = Pattern.compile("^[a-zA-Z]+( [a-zA-Z,.&]+)0,100}");
         Matcher m4 = p4.matcher(desc);
 
         if (!m1.matches()) {
@@ -115,7 +115,7 @@ public class addEvent extends AppCompatActivity {
         }
 
         if (!m4.matches()) {
-            Toast.makeText(getApplicationContext(),"The description can have a maximum of 61 words.",Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(),"The description can have a maximum of 101 words.",Toast.LENGTH_LONG).show();
             return;
         }
         if (title.length()<1 || date.length()<1 || time.length()<1 || desc.length()<1) {
