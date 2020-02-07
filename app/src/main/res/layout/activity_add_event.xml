@@ -1,9 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark"/>
+
+    <Button
+        android:id="@+id/logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LogOut" />
 
     <TextView
         android:id="@+id/textTitle"
@@ -11,14 +25,16 @@
         android:layout_height="wrap_content"
         android:textSize="14sp"
         android:textStyle="bold"
-        android:text="Title" />
+        android:text="Title"
+        android:layout_below="@id/toolbar"/>
 
     <EditText
         android:id="@+id/editTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginRight="80dp"
-        android:inputType="textLongMessage" />
+        android:inputType="textLongMessage"
+        android:layout_below="@id/textTitle" />
 
     <TextView
         android:id="@+id/textDate"
@@ -26,14 +42,16 @@
         android:layout_height="wrap_content"
         android:textSize="14sp"
         android:textStyle="bold"
-        android:text="Date" />
+        android:text="Date"
+        android:layout_below="@id/editTitle" />
 
     <EditText
         android:id="@+id/editDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginRight="80dp"
-        android:inputType="textLongMessage" />
+        android:inputType="textLongMessage"
+        android:layout_below="@id/textDate" />
 
     <TextView
         android:id="@+id/textTime"
@@ -41,14 +59,16 @@
         android:layout_height="wrap_content"
         android:textSize="14sp"
         android:textStyle="bold"
-        android:text="Time" />
+        android:text="Time"
+        android:layout_below="@id/editDate" />
 
     <EditText
         android:id="@+id/editTime"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginRight="80dp"
-        android:inputType="textLongMessage" />
+        android:inputType="textLongMessage"
+        android:layout_below="@id/textTime" />
 
     <TextView
         android:id="@+id/textDesc"
@@ -56,14 +76,16 @@
         android:layout_height="wrap_content"
         android:textSize="14sp"
         android:textStyle="bold"
-        android:text="Description" />
+        android:text="Description"
+        android:layout_below="@id/editTime" />
 
     <EditText
         android:id="@+id/editDesc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginRight="80dp"
-        android:inputType="textLongMessage" />
+        android:inputType="textLongMessage"
+        android:layout_below="@id/textDesc" />
 
     <Button
         android:id="@+id/setLoc"
@@ -71,7 +93,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="Set Location"
-        android:onClick="setLocation"/>
+        android:onClick="setLocation"
+        android:layout_below="@id/editDesc" />
 
     <Button
         android:layout_width="match_parent"
@@ -84,4 +107,4 @@
         android:layout_alignParentBottom="true"
         android:onClick="submitEvent"/>
 
-</LinearLayout>
+</RelativeLayout>

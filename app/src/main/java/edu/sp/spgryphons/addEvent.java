@@ -7,8 +7,11 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -16,6 +19,8 @@ import java.util.regex.Pattern;
 
 public class addEvent extends AppCompatActivity {
 
+
+    private Button Logout;
     private EditText text;
     private String title;
     private String date;
@@ -29,8 +34,17 @@ public class addEvent extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_event);
-
+        Logout = findViewById(R.id.logout);
         getState();
+        
+        Logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseAuth.getInstance().signOut();
+                Intent IntToMain = new Intent (addEvent.this, RealLoginPage.class);
+                startActivity(IntToMain);
+            }
+        });
     }
 
     public void setLocation(View v){
@@ -64,29 +78,44 @@ public class addEvent extends AppCompatActivity {
         text = findViewById(R.id.editTitle);
         title = text.getText().toString();
 
-        Pattern p1 = Pattern.compile("[a-zA-Z]{1,20}");
+        Pattern p1 = Pattern.compile("^[a-zA-Z]+( [a-zA-Z]+){1,6}");
         Matcher m1 = p1.matcher(title);
 
         text = findViewById(R.id.editDate);
         date = text.getText().toString();
 
-        Pattern p2 = Pattern.compile("[0-9]{1,11}");
+        Pattern p2 = Pattern.compile("[0-9]{2} [a-zA-Z]{3} [0-9]{4}");
         Matcher m2 = p2.matcher(date);
 
         text = findViewById(R.id.editTime);
         time = text.getText().toString();
 
-        Pattern p3 = Pattern.compile("[0-9]{1,4}");
+        Pattern p3 = Pattern.compile("[0-9]{4}");
         Matcher m3 = p3.matcher(time);
 
         text = findViewById(R.id.editDesc);
         desc = text.getText().toString();
 
-        Pattern p4 = Pattern.compile("[a-zA-Z]{1,60}");
+        Pattern p4 = Pattern.compile("^[a-zA-Z]+( [a-zA-Z,.&]+){1,60}");
         Matcher m4 = p4.matcher(desc);
 
-        if (!m1.matches()||!m2.matches()||!m3.matches()||!m4.matches()) {
-            Toast.makeText(getApplicationContext(),"Please fill in the fields properly.",Toast.LENGTH_SHORT).show();
+        if (!m1.matches()) {
+            Toast.makeText(getApplicationContext(),"The title can have a maximum of 7 words and must not contain any special characters.",Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        if (!m2.matches()) {
+            Toast.makeText(getApplicationContext(),"The date must be in this format: 11 Sep 2001.",Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        if (!m3.matches()) {
+            Toast.makeText(getApplicationContext(),"The time must be in the 24 hour format (e.g. 1500).",Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        if (!m4.matches()) {
+            Toast.makeText(getApplicationContext(),"The description can have a maximum of 61 words.",Toast.LENGTH_LONG).show();
             return;
         }
         if (title.length()<1 || date.length()<1 || time.length()<1 || desc.length()<1) {

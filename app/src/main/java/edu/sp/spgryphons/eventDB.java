@@ -47,7 +47,7 @@ public class eventDB {
                     }, new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError error) {
-                            Log.e("TAG","Failure to retrieve events from database.");
+                            Log.e("TAG","Failure to retrieve events from database. error:"+error);
                         }
                     });
             queue.add(stringRequest);
