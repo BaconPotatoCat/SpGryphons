@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/project"
+        android:id="@+id/projectbtn"
         android:icon="@drawable/projectbtn"
         android:title="Projects"
         android:orderInCategory="2"/>
@@ -10,7 +10,7 @@
     <item
         android:id="@+id/attendancebtn"
         android:icon="@drawable/attendancebtn"
-        android:title="Attendance"
+        android:title="About Us"
         android:orderInCategory="3"/>
     />
 

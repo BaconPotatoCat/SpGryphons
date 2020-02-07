@@ -65,7 +65,7 @@ public class attendance extends AppCompatActivity {
                         return true;
 
                     case R.id.attendancebtn:
-                        Toast.makeText(attendance.this,"You are already in Attendance Page!",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(attendance.this,"You are already in About Us Page!",Toast.LENGTH_SHORT).show();
                         return true;
                 }
                 return false;
