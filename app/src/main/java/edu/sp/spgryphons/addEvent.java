@@ -71,14 +71,14 @@ public class addEvent extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
 
-        clearState();
+        saveState();
     }
 
     public void submitEvent(View v) {
         text = findViewById(R.id.editTitle);
         title = text.getText().toString();
 
-        Pattern p1 = Pattern.compile("^[a-zA-Z]+( [a-zA-Z]+){0,6}");
+        Pattern p1 = Pattern.compile("^[a-zA-Z]{1,20}+( +[a-zA-Z]{1,20}+){0,6}");
         Matcher m1 = p1.matcher(title);
 
         text = findViewById(R.id.editDate);
@@ -96,7 +96,7 @@ public class addEvent extends AppCompatActivity {
         text = findViewById(R.id.editDesc);
         desc = text.getText().toString();
 
-        Pattern p4 = Pattern.compile("^[a-zA-Z]+( [a-zA-Z,.&]+)0,100}");
+        Pattern p4 = Pattern.compile("^[a-zA-Z,.&\\n]{1,20}+( +[a-zA-Z,.&\\n]{1,20}+){0,100}");
         Matcher m4 = p4.matcher(desc);
 
         if (!m1.matches()) {

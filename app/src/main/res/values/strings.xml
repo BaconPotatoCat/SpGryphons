@@ -3,12 +3,12 @@
     <string name="title_activity_event_maps">Map</string>
     <string name="title_activity_add_event_map">Map</string>
     <string name="location_permission_denied">"Please enable location services"</string>
-    <string name="hint_word">Word...</string>
-    <string name="hint_date">Date...</string>
-    <string name="hint_definition">Definition...</string>
+    <string name="hint_word">Project Title</string>
+    <string name="hint_date">Dateline: eg. 11 Sep 2011</string>
+    <string name="hint_definition">Description</string>
     <string name="button_save">Save</string>
     <string name="button_new">New</string>
     <string name="button_edit">Update Project Details</string>
     <string name="button_delete">Completed</string>
-    <string name="empty_not_saved">Word not saved because it is empty.</string>
+    <string name="empty_not_saved">Project not saved because it is empty.</string>
 </resources>
