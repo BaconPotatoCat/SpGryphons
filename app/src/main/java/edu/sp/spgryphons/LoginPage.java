@@ -58,7 +58,7 @@ public class LoginPage extends AppCompatActivity {
 
                                         }
                                         else{
-                                            startActivity(new Intent(LoginPage.this,HomePage.class));
+                                            startActivity(new Intent(LoginPage.this,events.class));
                                         }
                                     }
                                 });
