@@ -1,6 +1,7 @@
 package edu.sp.spgryphons;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -19,7 +20,7 @@ import java.util.regex.Pattern;
 
 public class addEvent extends AppCompatActivity {
 
-
+    Toolbar mToolbar;
     private Button Logout;
     private EditText text;
     private String title;
@@ -35,6 +36,8 @@ public class addEvent extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_event);
         Logout = findViewById(R.id.logout);
+        mToolbar =(androidx.appcompat.widget.Toolbar)findViewById(R.id.toolbar);
+        getPref();
         getState();
 
         Logout.setOnClickListener(new View.OnClickListener() {
@@ -63,7 +66,7 @@ public class addEvent extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-
+        getPref();
         getState();
     }
 
@@ -71,14 +74,14 @@ public class addEvent extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
 
-        saveState();
+        clearState();
     }
 
     public void submitEvent(View v) {
         text = findViewById(R.id.editTitle);
         title = text.getText().toString();
 
-        Pattern p1 = Pattern.compile("^[a-zA-Z]{1,20}+( +[a-zA-Z]{1,20}+){0,6}");
+        Pattern p1 = Pattern.compile("^[a-zA-Z0-9]{1,20}+( +[a-zA-Z0-9]{1,20}+){0,6}");
         Matcher m1 = p1.matcher(title);
 
         text = findViewById(R.id.editDate);
@@ -96,7 +99,7 @@ public class addEvent extends AppCompatActivity {
         text = findViewById(R.id.editDesc);
         desc = text.getText().toString();
 
-        Pattern p4 = Pattern.compile("^[a-zA-Z,.&\\n]{1,20}+( +[a-zA-Z,.&\\n]{1,20}+){0,100}");
+        Pattern p4 = Pattern.compile("^[a-zA-Z0-9,.&]{1,20}+([ \\n]+[a-zA-Z0-9,.&\\n]{1,20}+){0,100}");
         Matcher m4 = p4.matcher(desc);
 
         if (!m1.matches()) {
@@ -115,7 +118,7 @@ public class addEvent extends AppCompatActivity {
         }
 
         if (!m4.matches()) {
-            Toast.makeText(getApplicationContext(),"The description can have a maximum of 101 words.",Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(),"The description can have a maximum of 101 words and cannot contain forbidden characters.",Toast.LENGTH_LONG).show();
             return;
         }
         if (title.length()<1 || date.length()<1 || time.length()<1 || desc.length()<1) {
@@ -198,5 +201,12 @@ public class addEvent extends AppCompatActivity {
         dat.setText("");
         tim.setText("");
         des.setText("");
+    }
+
+    public void getPref() {
+        SharedPreferences mSharedPreferences = getSharedPreferences("ToolbarColor", MODE_PRIVATE);
+        int m = mSharedPreferences.getInt("color", getResources().getColor(R.color.colorPrimary));
+        Log.d("tag", "hello " + m);
+        mToolbar.setBackgroundColor(m);
     }
 }

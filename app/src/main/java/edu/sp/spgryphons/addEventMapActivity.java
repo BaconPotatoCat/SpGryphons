@@ -48,6 +48,7 @@ public class addEventMapActivity extends FragmentActivity implements OnMapReadyC
         mLocation = mMap.addMarker(new MarkerOptions().position(defLoc).title("Default Location").draggable(true));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(defLoc,zoom));
         setMapLongClick(mMap);
+        mMap.getUiSettings().setZoomControlsEnabled(true);
     }
 
     public void confirmLoc(View v) {

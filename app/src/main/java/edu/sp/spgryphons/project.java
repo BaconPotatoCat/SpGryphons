@@ -52,6 +52,7 @@ public class project extends AppCompatActivity {
         setContentView(R.layout.activity_project);
         mToolbar = findViewById(R.id.toolbar);
         Logout = findViewById(R.id.logout);
+        getPref();
         mDB = new WordListOpenHelper(this);
 
         // Create recycler view.
@@ -148,19 +149,13 @@ public class project extends AppCompatActivity {
     @Override
     public void onResume() {
         super.onResume();
+        getPref();
+    }
+
+    public void getPref() {
         SharedPreferences mSharedPreferences = getSharedPreferences("ToolbarColor", MODE_PRIVATE);
         int m = mSharedPreferences.getInt("color", getResources().getColor(R.color.colorPrimary));
         Log.d("tag", "hello " + m);
-        //if(getColor() != getResources().getColor(R.color.colorPrimary)){
-        //    mToolbar.setBackgroundColor(getColor());
-        //}
         mToolbar.setBackgroundColor(m);
-        Log.d("dd", "123");
     }
-
-
-
-
-
-
 }
