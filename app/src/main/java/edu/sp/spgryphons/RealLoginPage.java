@@ -41,7 +41,7 @@ public class RealLoginPage extends AppCompatActivity {
                 FirebaseUser mFirebaseUser = mFirebaseAuth.getCurrentUser();
                 if( mFirebaseUser != null){
                     Toast.makeText(RealLoginPage.this,"You are logged in!",Toast.LENGTH_SHORT).show();
-                    Intent i = new Intent(RealLoginPage.this, TestHome.class);
+                    Intent i = new Intent(RealLoginPage.this, events.class);
                     startActivity(i);
                 }
                 else{
