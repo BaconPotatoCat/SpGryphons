@@ -87,7 +87,7 @@
         android:inputType="textMultiLine"
         android:layout_below="@id/textDesc" />
 
-    <Button
+    <Button style="@style/AppTheme.Button"
         android:id="@+id/setLoc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
