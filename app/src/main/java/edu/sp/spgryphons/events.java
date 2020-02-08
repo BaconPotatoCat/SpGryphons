@@ -94,13 +94,8 @@ public class events extends AppCompatActivity {
         super.onResume();
         SharedPreferences mSharedPreferences = getSharedPreferences("ToolbarColor", MODE_PRIVATE);
         int m = mSharedPreferences.getInt("color", getResources().getColor(R.color.colorPrimary));
-        Log.d("tag", "hello " + m);
-        //if(getColor() != getResources().getColor(R.color.colorPrimary)){
-        //    mToolbar.setBackgroundColor(getColor());
-        //}
-        //mToolbar.setBackgroundColor(m);
+        mToolbar.setBackgroundColor(m);
     }
-
 
 }
 

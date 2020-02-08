@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Setting">
+    tools:context=".Setting"
+    android:background="@drawable/bg3">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -14,6 +15,7 @@
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
         android:theme="@style/ThemeOverlay.AppCompat.Dark"/>
+
 
     <TextView
         android:id="@+id/textView2"
@@ -30,18 +32,18 @@
         android:id="@+id/btnred"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="btnred" />
+        android:text="Pink" />
 
     <Button
         android:id="@+id/btngreen"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="btngreen" />
+        android:text="Purple" />
 
     <Button
         android:id="@+id/btnyellow"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="btnyellow" />
+        android:text="Blue" />
 
 </LinearLayout>

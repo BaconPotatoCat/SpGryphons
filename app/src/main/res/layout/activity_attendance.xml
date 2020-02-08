@@ -3,22 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/bg1">
+    android:background="@drawable/bgaboutus">
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="79dp"
-        android:text="Sociable on as carriage my position weddings raillery consider. Peculiar trifling absolute and wandered vicinity property yet. The and collecting motionless difficulty son. His hearing staying ten colonel met. Sex drew six easy four dear cold deny. Moderate children at of outweigh it. Unsatiable it considered invitation he travelling insensible. Consulted admitting oh mr up as described acuteness propriety moonlight. "
-        android:textAlignment="textStart"
-        android:textColor="#3A2025"
-        android:textSize="20sp"
-        android:textStyle="bold|italic" />
+
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -29,11 +16,30 @@
         android:theme="@style/ThemeOverlay.AppCompat.Dark" />
 
 
+
+
     <Button
         android:id="@+id/logout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="LogOut" />
+        android:text="LogOut"
+        />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="150dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="Gryphons is a special interest group for students taking the Diploma in Infocomm Security in Singapore Polytechnic. Here, we encourage our members to learn more about cyber security based on the things that interest them. No one is forced to do anything here, and how much you learn and achieve is only limited by yourself."
+        android:textColor="#3A2025"
+        android:textSize="20sp"
+        android:textStyle="bold|italic" />
 
     <TextView
         android:id="@+id/textView4"
@@ -41,9 +47,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="155dp"
-        android:text="About Us Page" />
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="145dp"
+        android:textSize="25sp"
+        android:text="About Us" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigation"
