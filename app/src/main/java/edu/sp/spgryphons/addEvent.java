@@ -1,6 +1,7 @@
 package edu.sp.spgryphons;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -19,7 +20,7 @@ import java.util.regex.Pattern;
 
 public class addEvent extends AppCompatActivity {
 
-
+    Toolbar mToolbar;
     private Button Logout;
     private EditText text;
     private String title;
@@ -35,6 +36,8 @@ public class addEvent extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_event);
         Logout = findViewById(R.id.logout);
+        mToolbar =(androidx.appcompat.widget.Toolbar)findViewById(R.id.toolbar);
+        getPref();
         getState();
 
         Logout.setOnClickListener(new View.OnClickListener() {
@@ -63,7 +66,7 @@ public class addEvent extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-
+        getPref();
         getState();
     }
 
@@ -198,5 +201,12 @@ public class addEvent extends AppCompatActivity {
         dat.setText("");
         tim.setText("");
         des.setText("");
+    }
+
+    public void getPref() {
+        SharedPreferences mSharedPreferences = getSharedPreferences("ToolbarColor", MODE_PRIVATE);
+        int m = mSharedPreferences.getInt("color", getResources().getColor(R.color.colorPrimary));
+        Log.d("tag", "hello " + m);
+        mToolbar.setBackgroundColor(m);
     }
 }

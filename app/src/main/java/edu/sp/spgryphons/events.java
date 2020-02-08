@@ -35,6 +35,7 @@ public class events extends AppCompatActivity {
         mToolbar =(Toolbar)findViewById(R.id.toolbar);
         Logout = findViewById(R.id.logout);
 
+        getPref();
         eventDB b = new eventDB();
         ArrayList<eventObj> eventsArray = b.getEventObj(this);
 
@@ -92,15 +93,19 @@ public class events extends AppCompatActivity {
     @Override
     public void onResume(){
         super.onResume();
-        SharedPreferences mSharedPreferences = getSharedPreferences("ToolbarColor", MODE_PRIVATE);
-        int m = mSharedPreferences.getInt("color", getResources().getColor(R.color.colorPrimary));
-        Log.d("tag", "hello " + m);
+        getPref();
         //if(getColor() != getResources().getColor(R.color.colorPrimary)){
         //    mToolbar.setBackgroundColor(getColor());
         //}
         //mToolbar.setBackgroundColor(m);
     }
 
+    public void getPref() {
+        SharedPreferences mSharedPreferences = getSharedPreferences("ToolbarColor", MODE_PRIVATE);
+        int m = mSharedPreferences.getInt("color", getResources().getColor(R.color.colorPrimary));
+        Log.d("tag", "hello " + m);
+        mToolbar.setBackgroundColor(m);
+    }
 
 }
 

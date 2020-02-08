@@ -50,7 +50,7 @@ public class eventMapsActivity extends FragmentActivity implements OnMapReadyCal
         LatLng coor = new LatLng(Double.parseDouble(coords[0]),Double.parseDouble(coords[1]));
         mMap.addMarker(new MarkerOptions().position(coor).title("Event Location"));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(coor,zoom));
-
+        mMap.getUiSettings().setZoomControlsEnabled(true);
         enableGetLoc();
     }
 
