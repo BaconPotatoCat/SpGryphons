@@ -36,33 +36,33 @@ public class Setting extends AppCompatActivity {
         mRedColor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mToolbar.setBackgroundColor(getResources().getColor(R.color.colorRed));
+                mToolbar.setBackgroundColor(getResources().getColor(R.color.colorPink));
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    getWindow().setStatusBarColor(getResources().getColor(R.color.colorRed));
+                    getWindow().setStatusBarColor(getResources().getColor(R.color.colorPink));
                 }
-                storeColor(getResources().getColor(R.color.colorRed));
+                storeColor(getResources().getColor(R.color.colorPink));
             }
         });
 
         mGreenColor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mToolbar.setBackgroundColor(getResources().getColor(R.color.colorGreen));
+                mToolbar.setBackgroundColor(getResources().getColor(R.color.colorPurple));
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    getWindow().setStatusBarColor(getResources().getColor(R.color.colorGreen));
+                    getWindow().setStatusBarColor(getResources().getColor(R.color.colorPurple));
                 }
-                storeColor(getResources().getColor(R.color.colorGreen));
+                storeColor(getResources().getColor(R.color.colorPurple));
             }
         });
 
         mYellowColor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mToolbar.setBackgroundColor(getResources().getColor(R.color.colorYello));
+                mToolbar.setBackgroundColor(getResources().getColor(R.color.colorBlue));
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    getWindow().setStatusBarColor(getResources().getColor(R.color.colorYello));
+                    getWindow().setStatusBarColor(getResources().getColor(R.color.colorBlue));
                 }
-                storeColor(getResources().getColor(R.color.colorYello));
+                storeColor(getResources().getColor(R.color.colorBlue));
             }
         });
 

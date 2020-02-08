@@ -1,6 +1,7 @@
 package edu.sp.spgryphons;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -24,6 +26,7 @@ public class EditWordActivity extends AppCompatActivity {
     private static final String NO_WORD = "";
 
     private EditText mEditWordView;
+    Toolbar mToolbar;
     private EditText mEditDateView;
 
     // Unique tag for the intent reply.
@@ -39,6 +42,7 @@ public class EditWordActivity extends AppCompatActivity {
 
         mEditWordView = (EditText) findViewById(R.id.edit_word);
         mEditDateView = (EditText) findViewById(R.id.edit_date);
+        mToolbar =(Toolbar)findViewById(R.id.toolbar);
 
 
         // Get data sent from calling activity.
@@ -87,6 +91,17 @@ public class EditWordActivity extends AppCompatActivity {
         replyIntent.putExtra(WordListAdapter.EXTRA_ID, mId);
         setResult(RESULT_OK, replyIntent);
         finish();
+    }
+    @Override
+    public void onResume(){
+        super.onResume();
+        SharedPreferences mSharedPreferences = getSharedPreferences("ToolbarColor", MODE_PRIVATE);
+        int m = mSharedPreferences.getInt("color", getResources().getColor(R.color.colorPrimary));
+        Log.d("tag", "hello " + m);
+        //if(getColor() != getResources().getColor(R.color.colorPrimary)){
+        //    mToolbar.setBackgroundColor(getColor());
+        //}
+        mToolbar.setBackgroundColor(m);
     }
 }
 

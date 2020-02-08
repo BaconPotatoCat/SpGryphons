@@ -34,8 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_marginRight="80dp"
         android:inputType="textLongMessage"
-        android:layout_below="@id/textTitle"
-        android:hint="Singapore Poly Open House"/>
+        android:layout_below="@id/textTitle" />
 
     <TextView
         android:id="@+id/textDate"
@@ -52,8 +51,7 @@
         android:layout_height="wrap_content"
         android:layout_marginRight="80dp"
         android:inputType="textLongMessage"
-        android:layout_below="@id/textDate"
-        android:hint="25 Dec 2019"/>
+        android:layout_below="@id/textDate" />
 
     <TextView
         android:id="@+id/textTime"
@@ -70,8 +68,7 @@
         android:layout_height="wrap_content"
         android:layout_marginRight="80dp"
         android:inputType="textLongMessage"
-        android:layout_below="@id/textTime"
-        android:hint="1500"/>
+        android:layout_below="@id/textTime" />
 
     <TextView
         android:id="@+id/textDesc"
@@ -87,9 +84,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginRight="80dp"
-        android:inputType="textMultiLine"
-        android:layout_below="@id/textDesc"
-        android:hint="A short description."/>
+        android:inputType="textLongMessage"
+        android:layout_below="@id/textDesc" />
 
     <Button
         android:id="@+id/setLoc"
