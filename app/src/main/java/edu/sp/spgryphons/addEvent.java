@@ -74,14 +74,14 @@ public class addEvent extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
 
-        saveState();
+        clearState();
     }
 
     public void submitEvent(View v) {
         text = findViewById(R.id.editTitle);
         title = text.getText().toString();
 
-        Pattern p1 = Pattern.compile("^[a-zA-Z]{1,20}+( +[a-zA-Z]{1,20}+){0,6}");
+        Pattern p1 = Pattern.compile("^[a-zA-Z0-9]{1,20}+( +[a-zA-Z0-9]{1,20}+){0,6}");
         Matcher m1 = p1.matcher(title);
 
         text = findViewById(R.id.editDate);
@@ -99,7 +99,7 @@ public class addEvent extends AppCompatActivity {
         text = findViewById(R.id.editDesc);
         desc = text.getText().toString();
 
-        Pattern p4 = Pattern.compile("^[a-zA-Z,.&\\n]{1,20}+( +[a-zA-Z,.&\\n]{1,20}+){0,100}");
+        Pattern p4 = Pattern.compile("^[a-zA-Z0-9,.&]{1,20}+([ \\n]+[a-zA-Z0-9,.&\\n]{1,20}+){0,100}");
         Matcher m4 = p4.matcher(desc);
 
         if (!m1.matches()) {
@@ -118,7 +118,7 @@ public class addEvent extends AppCompatActivity {
         }
 
         if (!m4.matches()) {
-            Toast.makeText(getApplicationContext(),"The description can have a maximum of 101 words.",Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(),"The description can have a maximum of 101 words and cannot contain forbidden characters.",Toast.LENGTH_LONG).show();
             return;
         }
         if (title.length()<1 || date.length()<1 || time.length()<1 || desc.length()<1) {
